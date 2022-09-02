@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lang_practise/app_localization.dart';
 import 'package:lang_practise/lang_bloc/language_bloc.dart';
+import 'package:lang_practise/utils/enums.dart';
 import 'package:lang_practise/utils/labels.dart';
 
 class HomePage extends StatefulWidget {
@@ -37,8 +38,8 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   LanguageContainer(
                     onTap: () {
-                      BlocProvider.of<LanguageBloc>(context)
-                          .add(LoadLanguage(locale: const Locale('en', '')));
+                      BlocProvider.of<LanguageBloc>(context).add(LoadLanguage(
+                          locale: Locale('en', '')));
                     },
                     color1: Colors.cyan,
                     color2: Colors.cyanAccent,
@@ -70,6 +71,19 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  String getLanguage(SupportedLanguages lang) {
+    switch (lang) {
+      case SupportedLanguages.en:
+        return 'en';
+      case SupportedLanguages.te:
+        return 'te';
+      case SupportedLanguages.ta:
+       return 'ta';
+      default:
+       return 'en';
+    }
   }
 
   _changeLanguage(String loc) {

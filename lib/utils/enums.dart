@@ -1,0 +1,1 @@
+enum SupportedLanguages {en, te, ta}
